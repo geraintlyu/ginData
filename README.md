@@ -1,2 +1,2 @@
 # ginData
-learn gin
+learn go gin by project
