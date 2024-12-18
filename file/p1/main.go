@@ -8,7 +8,7 @@ import (
 )
 
 /*
-	读取文件一共有三种方法: 直接通过os来读取、通过bufio来读取、通过ioutil读取
+	读取文件一共有两种方法: 直接通过os来读取、通过bufio来读取
 */
 
 // 通过os直接来读取
@@ -69,18 +69,20 @@ func readByBuffer(filePathAb string) {
 	fmt.Println(data)
 }
 
-func readByUtil(filePathAb string) {
-	file, err := os.Open(filePathAb)
+// 由于ioutil的模块被废弃，仅保留了os和io两个功能包
+func readByOs(filePathAb string) {
+	var data []byte
+	data, err := os.ReadFile(filePathAb)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	defer file.Close()
 
-	io.ReadAll(file)
+	fmt.Println(string(data))
 }
 
 func main() {
-	readByOS("./main.go")
-	readByBuffer("./main.go")
+	// readByOS("./main.go")
+	// readByBuffer("./main.go")
+	readByOs("./main.go")
 }
